@@ -1,4 +1,4 @@
-import { default as gcn } from './'
+import gcn from '../'
 
 describe("getClassNameTests", () => {
     it("should return the expected classes", () => {
@@ -9,13 +9,13 @@ describe("getClassNameTests", () => {
             "&--expected": () => true,
             "&--unexpected": () => false
         })
-        expect(result).toEqual(expected);
+        expect(result.toString()).toEqual(expected);
     })
 
     it("should allow extension", () => {
         const expected = "base--extended";
         const result = gcn({ base: "base" }).extend("&--extended");
-        expect(result).toEqual(expected);
+        expect(result.toString()).toEqual(expected);
     })
 
     it("should allow recomputing after extension", () => {
@@ -23,7 +23,7 @@ describe("getClassNameTests", () => {
         const result = gcn({ base: "base" }).extend("&--extended").recompute({
             "&--recomputed": true
         });
-        expect(result).toEqual(expected);
+        expect(result.toString()).toEqual(expected);
     })
 
     it("should allow changing the interpolation token", () => {
@@ -35,6 +35,6 @@ describe("getClassNameTests", () => {
             "%--expected": () => true,
             "%--unexpected": () => false
         })
-        expect(result).toEqual(expected);
+        expect(result.toString()).toEqual(expected);
     })
 })
