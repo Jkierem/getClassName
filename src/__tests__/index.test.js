@@ -1,6 +1,16 @@
 import gcn from '../'
 
 describe("getClassNameTests", () => {
+    it("should allow classes without a base", () => {
+        const expected = "one two four"
+        const result = gcn({
+            one: true,
+            two: true,
+            three: false,
+            four: true
+        })
+        expect(result.toString()).toEqual(expected);
+    })
     it("should return the expected classes", () => {
         const expected = "base base--active base--expected";
         const result = gcn({
