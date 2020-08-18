@@ -5,7 +5,6 @@
     "module": "./dist/esm/getclassname.esm.js",
     "browser": "./dist/umd/getclassname.umd.js",
     "license": "MIT",
-    "types": "types/index.d.ts",
     "publishConfig": {
         "access": "public"
     },
@@ -14,8 +13,7 @@
         "url": "https://github.com/Jkierem/juan-utils"
     },
     "files": [
-        "dist",
-        "types"
+        "dist"
     ],
     "scripts": {
         "build": "rollup -c",
