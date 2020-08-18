@@ -1,6 +1,6 @@
 # getClassName
 
-Simple function for managing css classes. It was made with react in mind
+Simple function for managing css classes. It was made with react in mind. The function returns a string object so if you want the primitive value you have to call toString. You can safely pass the value to className prop in react.
 
 ## Installation
 
