@@ -23,24 +23,24 @@ const common = getClassName({
     "class2": () => true
 })
 
-// common === "class1 class2"
+// common == "class1 class2"
 
 const interpolation = getClassName({
     base: "base",
     "&--active": true,
 })
 
-// interpolation === "base base--active"
+// interpolation == "base base--active"
 
 const extended = interpolation.extend("&__extended");
 
-// extended === "base__extended"
+// extended == "base__extended"
 
 const extra = interpolation.extend("&__extended").recompute({
     "&--active": false
 })
 
-// extra === "base__extended base__extended--active"
+// extra == "base__extended base__extended--active"
 
 const changeInterpolationToken = getClassName({
     base: "base",
@@ -48,7 +48,7 @@ const changeInterpolationToken = getClassName({
     "$--different": true
 })
 
-// changeInterpolationToken === "base base--different"
+// changeInterpolationToken == "base base--different"
 ```
 
 And that's all there is...
