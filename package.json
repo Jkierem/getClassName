@@ -5,7 +5,7 @@
     "module": "./dist/esm/getclassname.esm.js",
     "browser": "./dist/umd/getclassname.umd.js",
     "license": "MIT",
-    "types": "./index.d.ts",
+    "types": "./types/index.d.ts",
     "publishConfig": {
         "access": "public"
     },
@@ -15,7 +15,7 @@
     },
     "files": [
         "dist",
-        "./index.d.ts"
+        "types"
     ],
     "scripts": {
         "build": "rollup -c",
