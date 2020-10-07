@@ -1,9 +1,10 @@
+const extract = fn => typeof(fn) === "function" ? fn() : fn;
 const makeRegexp = (tok="&") => new RegExp(tok,"gi")
 const preProcess = obj => {
     if(obj.base){
         const { token="&", ...rest } = obj
         const entries = Object.entries(rest)
-            .map(([ key, val]) => key === "base" ? [val, true] : [key,val])
+            .map(([ key, val ]) => key === "base" ? [val, true] : [key,val])
             .map(([ key, val ]) => [ key.replace(makeRegexp(token),obj.base), val])
         
         return Object.fromEntries(entries) 
@@ -12,13 +13,13 @@ const preProcess = obj => {
     }
 }
 
-const _getClassName = (obj) => Object.entries(preProcess(obj)).map(([className,pred]) => {
-    const shouldConcat = typeof(pred) === "function" ? pred() : pred;
-    return shouldConcat ? className : undefined
-}).filter(Boolean).join(" ")
+const processClass = (obj) => Object.entries(preProcess(obj))
+    .map(([cl,pred]) => extract(pred) && cl )
+    .filter(Boolean)
+    .join(" ")
 
 export default function getClassName (obj) {
-    const __inner = _getClassName(obj)
+    const __inner = processClass(obj)
     const res = Object.assign(__inner,{
         token(){ 
             return obj?.token || "&"

@@ -5,6 +5,7 @@
     "module": "./dist/esm/getclassname.esm.js",
     "browser": "./dist/umd/getclassname.umd.js",
     "license": "MIT",
+    "types": "./index.d.ts",
     "publishConfig": {
         "access": "public"
     },
@@ -13,7 +14,8 @@
         "url": "https://github.com/Jkierem/getClassName"
     },
     "files": [
-        "dist"
+        "dist",
+        "index.d.ts"
     ],
     "scripts": {
         "build": "rollup -c",
