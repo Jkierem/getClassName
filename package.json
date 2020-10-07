@@ -1,6 +1,6 @@
 {
     "name": "getclassname",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "./dist/cjs/getclassname.cjs.js",
     "module": "./dist/esm/getclassname.esm.js",
     "browser": "./dist/umd/getclassname.umd.js",
