@@ -11,5 +11,5 @@ declare module "getclassname" {
         recompute(data: ClassNameData): ClassName;
     }
 
-    export function getClassName(data: ClassNameData): ClassName;
+    export default function getClassName(data: ClassNameData): ClassName;
 }
