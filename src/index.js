@@ -5,11 +5,11 @@ const fromEntries = entr => entr.reduce((acc,[key,val]) => ({ ...acc, [key]: val
 const preProcess = obj => {
     if(obj.base){
         const { token="&", ...rest } = obj
-        const entries = entries(rest)
+        const entr = entries(rest)
             .map(([ key, val ]) => key === "base" ? [val, true] : [key,val])
             .map(([ key, val ]) => [ key.replace(makeRegexp(token),obj.base), val])
         
-        return fromEntries(entries) 
+        return fromEntries(entr) 
     } else {
         return obj
     }
