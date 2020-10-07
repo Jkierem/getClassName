@@ -1,19 +1,21 @@
 const extract = fn => typeof(fn) === "function" ? fn() : fn;
 const makeRegexp = (tok="&") => new RegExp(tok,"gi")
+const entries = obj => Object.keys(obj).map(key => [key,obj[key]])
+const fromEntries = entr => entr.reduce((acc,[key,val]) => ({ ...acc, [key]: val }),{})
 const preProcess = obj => {
     if(obj.base){
         const { token="&", ...rest } = obj
-        const entries = Object.entries(rest)
+        const entries = entries(rest)
             .map(([ key, val ]) => key === "base" ? [val, true] : [key,val])
             .map(([ key, val ]) => [ key.replace(makeRegexp(token),obj.base), val])
         
-        return Object.fromEntries(entries) 
+        return fromEntries(entries) 
     } else {
         return obj
     }
 }
 
-const processClass = (obj) => Object.entries(preProcess(obj))
+const processClass = (obj) => entries(preProcess(obj))
     .map(([cl,pred]) => extract(pred) && cl )
     .filter(Boolean)
     .join(" ")
