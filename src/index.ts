@@ -1,9 +1,10 @@
 type Extractable<T> = T | (() => T)
 type Extracted<T> = T extends ((...args: unknown[]) => unknown) ? ReturnType<T> : T
 type ClassNameConfig = {
-    base?: string,
-    token?: string
-} & Record<string, string | Extractable<boolean>>
+    base?: string;
+    token?: string;
+    [x: string]: any;
+} 
 type ClassName = string & {
     /**
      * Returns the current base class of the classname. 
