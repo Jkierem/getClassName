@@ -47,4 +47,28 @@ describe("getClassNameTests", () => {
         })
         expect(result.toString()).toEqual(expected);
     })
+
+    it("should have a default token as &", () => {
+        const cls = gcn()
+        expect(cls.token()).toBe("&")
+    })
+
+    it("should have a default base as the computed class", () => {
+        const cls = gcn()
+        expect(cls.base()).toBe("")
+    })
+
+    it("recompute should be identity if no argument is passed", () => {
+        const cls = gcn({ base: "base" }).recompute()
+        expect(cls.toString()).toBe("base")
+    })
+
+    it("shorthands should resolve to the same values", () => {
+        const base = gcn({ base: "block" })
+        const el = base.element("element");
+        const mod = base.modifier("modifier");
+
+        expect(el.toString()).toEqual("block__element")
+        expect(mod.toString()).toEqual("block--modifier")
+    })
 })

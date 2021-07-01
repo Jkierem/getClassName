@@ -49,6 +49,18 @@ const changeInterpolationToken = getClassName({
 })
 
 // changeInterpolationToken == "base base--different"
+
+// BEM Shorthands
+
+const Block = getClassName({ base: "block" })
+
+const Element = Block.element("element");
+
+// Block.element("element") == Block.extend("&__element") == "block__element"
+
+const Modifier = Block.modifier("modifier")
+
+// Block.modifier("modifier") == Block.extend("&--modifier") == "block--modifier"
 ```
 
 And that's all there is...
