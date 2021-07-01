@@ -22,11 +22,11 @@ type ClassName = string & {
      */
     extend: (subclass: string) => ClassName,
     /**
-     * Creates a new classname, using the previous configuration. If a new configuration
-     * is passed as an argument, it is used to overwrite the previous one by means of
-     * shallow merging.
+     * Creates a new classname, using the configuration passed as argument. 
+     * The base is automatically set to the current base but can be overwritten 
+     * in the config object
      */
-    recompute: (newConfig?: ClassNameConfig) => ClassName,
+    recompute: (config?: ClassNameConfig) => ClassName,
     /**
      * Creates a new element subclass by prepending `"&__"`. 
      * Shorthand for `extend("&__subclass")`
