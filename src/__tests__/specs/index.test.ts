@@ -1,15 +1,16 @@
-import gcn from '../'
+/// <reference path="../typings/jest.d.ts" />
+import gcn from '../..'
 
 describe("getClassNameTests", () => {
     it("should allow classes without a base", () => {
-        const expected = "one two four"
+        const expected = "one two four five"
         const result = gcn({
             one: true,
             two: true,
             three: false,
             four: true
         })
-        expect(result.toString()).toEqual(expected);
+        expect(result).toBeEquivalentCSS(expected);
     })
     it("should return the expected classes", () => {
         const expected = "base base--active base--expected";
@@ -19,13 +20,13 @@ describe("getClassNameTests", () => {
             "&--expected": () => true,
             "&--unexpected": () => false
         })
-        expect(result.toString()).toEqual(expected);
+        expect(result).toBeEquivalentCSS(expected);
     })
 
     it("should allow extension", () => {
         const expected = "base--extended";
         const result = gcn({ base: "base" }).extend("&--extended");
-        expect(result.toString()).toEqual(expected);
+        expect(result).toBeEquivalentCSS(expected);
     })
 
     it("should allow recomputing after extension", () => {
@@ -33,7 +34,7 @@ describe("getClassNameTests", () => {
         const result = gcn({ base: "base" }).extend("&--extended").recompute({
             "&--recomputed": true
         });
-        expect(result.toString()).toEqual(expected);
+        expect(result).toBeEquivalentCSS(expected);
     })
 
     it("should allow changing the interpolation token", () => {
@@ -45,7 +46,7 @@ describe("getClassNameTests", () => {
             "%--expected": () => true,
             "%--unexpected": () => false
         })
-        expect(result.toString()).toEqual(expected);
+        expect(result).toBeEquivalentCSS(expected);
     })
 
     it("should have a default token as &", () => {

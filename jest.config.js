@@ -5,6 +5,14 @@ module.exports = {
     './src/index.ts'
   ],
   testMatch: [ 
-    "**\\src\\__tests__\\*.test.ts"
-  ]
+    "**\\src\\__tests__\\specs\\*.test.ts"
+  ],
+  setupFilesAfterEnv: [ 
+    "./setupTests.ts"
+  ],
+  globals: {
+    "ts-jest": {
+      tsconfig: "./tsconfig.json"
+    }
+  }
 };

@@ -1,11 +1,12 @@
 type Extractable<T> = T | (() => T)
 type Extracted<T> = T extends ((...args: unknown[]) => unknown) ? ReturnType<T> : T
-type ClassNameConfig = {
+export type ClassNameConfig = {
     base?: string;
     token?: string;
-    [x: string]: any;
+    [x: string]: string | Extractable<boolean> | undefined;
 } 
-type ClassName = string & {
+
+export type ClassName = string & {
     /**
      * Returns the current base class of the classname. 
      * It is what the token is replaced to.
@@ -79,7 +80,7 @@ export default function getClassName (obj: ClassNameConfig = {}): ClassName {
             return getClassName({
                 base: this.base(),
                 ...obj
-            } as ClassNameConfig)
+            })
         },
         element(sub: string){
             return this.extend(`&__${sub}`)
